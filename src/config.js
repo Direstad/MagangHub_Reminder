@@ -1,27 +1,26 @@
-const DEFAULT_API_BASE = 'https://monev-api.maganghub.kemnaker.go.id/api/v1';
 const DEFAULT_WEB_URL = 'https://monev.maganghub.kemnaker.go.id/';
 const DEFAULT_TIMEZONE = 'Asia/Jakarta';
+const DEFAULT_OFF_DAYS = 'SUNDAY';
 
 export function loadConfig(env = process.env) {
-  const authToken = (env.MAGANGHUB_AUTH_TOKEN || '').trim();
-  const cookie = (env.MAGANGHUB_COOKIE || '').trim();
   const gmailUser = (env.GMAIL_USER || '').trim();
   const gmailAppPassword = (env.GMAIL_APP_PASSWORD || '').trim();
   const toEmail = (env.REMINDER_TO_EMAIL || gmailUser).trim();
+  const participantName = (env.PARTICIPANT_NAME || 'Peserta Magang').trim();
   const timeZone = (env.TIMEZONE || DEFAULT_TIMEZONE).trim();
-  const apiBase = (env.MAGANGHUB_API_BASE || DEFAULT_API_BASE).trim().replace(/\/+$/, '');
   const webUrl = (env.MAGANGHUB_WEB_URL || DEFAULT_WEB_URL).trim();
+  const internshipStartDate = (env.INTERNSHIP_START_DATE || '').trim();
+  const internshipEndDate = (env.INTERNSHIP_END_DATE || '').trim();
+
+  const offDays = (env.OFF_DAYS || DEFAULT_OFF_DAYS)
+    .split(',')
+    .map((day) => day.trim().toUpperCase())
+    .filter(Boolean);
 
   const extraHolidays = (env.EXTRA_HOLIDAYS || '')
     .split(',')
     .map((item) => item.trim())
     .filter(Boolean);
-
-  if (!authToken && !cookie) {
-    throw new Error(
-      'Konfigurasi autentikasi kosong: isi minimal MAGANGHUB_AUTH_TOKEN atau MAGANGHUB_COOKIE.'
-    );
-  }
 
   if (!gmailUser || !gmailAppPassword) {
     throw new Error(
@@ -30,14 +29,15 @@ export function loadConfig(env = process.env) {
   }
 
   return {
-    authToken,
-    cookie,
     gmailUser,
     gmailAppPassword,
     toEmail,
+    participantName,
     timeZone,
-    apiBase,
     webUrl,
+    offDays,
     extraHolidays,
+    internshipStartDate,
+    internshipEndDate,
   };
 }

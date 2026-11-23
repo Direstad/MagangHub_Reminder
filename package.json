@@ -9,9 +9,9 @@
   "scripts": {
     "start": "node --env-file-if-exists=.env src/index.js",
     "test": "node --test test/*.test.js",
-    "check": "node --check src/index.js src/config.js src/date.js src/maganghub.js src/reminder.js src/notifier.js"
+    "check": "node --check src/index.js src/config.js src/date.js src/reminder.js src/notifier.js"
   },
   "dependencies": {
-    "nodemailer": "^10.6.1"
+    "nodemailer": "^8.0.5"
   }
 }
