@@ -23,7 +23,7 @@ describe('loadConfig', () => {
       GMAIL_USER: 'sender@gmail.com',
       GMAIL_APP_PASSWORD: 'secret',
       REMINDER_TO_EMAIL: 'recipient@gmail.com',
-      PARTICIPANT_NAME: 'Dian Restu Adji',
+      PARTICIPANT_NAME: 'Budi Santoso',
       OFF_DAYS: 'sunday, saturday',
       EXTRA_HOLIDAYS: '2026-12-25, 2027-01-01 , ',
       INTERNSHIP_START_DATE: '2026-08-10',
@@ -32,7 +32,7 @@ describe('loadConfig', () => {
     });
 
     assert.equal(cfg.toEmail, 'recipient@gmail.com');
-    assert.equal(cfg.participantName, 'Dian Restu Adji');
+    assert.equal(cfg.participantName, 'Budi Santoso');
     assert.deepEqual(cfg.offDays, ['SUNDAY', 'SATURDAY']);
     assert.deepEqual(cfg.extraHolidays, ['2026-12-25', '2027-01-01']);
     assert.equal(cfg.internshipStartDate, '2026-08-10');

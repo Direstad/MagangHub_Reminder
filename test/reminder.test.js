@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { evaluateSchedule, runScheduledReminder } from '../src/reminder.js';
 
 const baseConfig = {
-  participantName: 'Dian Restu Adji',
+  participantName: 'Budi Santoso',
   offDays: ['SUNDAY'],
   extraHolidays: ['2026-12-25'],
   internshipStartDate: '2026-08-10',

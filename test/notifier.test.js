@@ -18,9 +18,9 @@ describe('createEmailNotifier', () => {
     };
 
     const notifier = createEmailNotifier({
-      gmailUser: 'dianrestuadji@gmail.com',
+      gmailUser: 'sender@gmail.com',
       gmailAppPassword: 'abcd efgh ijkl mnop',
-      toEmail: 'dianrestuadji@gmail.com',
+      toEmail: 'recipient@gmail.com',
       createTransportImpl: fakeCreateTransport,
     });
 
@@ -31,9 +31,9 @@ describe('createEmailNotifier', () => {
     });
 
     assert.equal(transportConfig.service, 'gmail');
-    assert.equal(transportConfig.auth.user, 'dianrestuadji@gmail.com');
+    assert.equal(transportConfig.auth.user, 'sender@gmail.com');
     assert.equal(transportConfig.auth.pass, 'abcd efgh ijkl mnop');
-    assert.equal(sentMail.to, 'dianrestuadji@gmail.com');
+    assert.equal(sentMail.to, 'recipient@gmail.com');
     assert.equal(sentMail.subject, 'Pengingat Absen');
     assert.equal(sentMail.text, 'Jangan lupa absen');
     assert.equal(sentMail.html, '<p>Jangan lupa absen</p>');
