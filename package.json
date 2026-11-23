@@ -1,0 +1,17 @@
+{
+  "name": "maganghub-attendance-reminder",
+  "version": "1.0.0",
+  "description": "Pengingat otomatis absensi harian MagangHub Kemnaker via Email (Gmail SMTP)",
+  "type": "module",
+  "engines": {
+    "node": ">=22.9.0"
+  },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env src/index.js",
+    "test": "node --test test/*.test.js",
+    "check": "node --check src/index.js src/config.js src/date.js src/maganghub.js src/reminder.js src/notifier.js"
+  },
+  "dependencies": {
+    "nodemailer": "^10.6.1"
+  }
+}
